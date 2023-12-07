@@ -11,15 +11,15 @@ import { FritterContext, FritterMiddlewareFunction } from "@fritter/core";
 
 export type ComponentFunction<ComponentFunctionOptions> = (options : ComponentFunctionOptions) => DE;
 
-export type FritterRenderComponentMiddlewareFritterContext<BaseFritterContext, RenderComponentOptions> =
+export type FritterRenderComponentMiddlewareFritterContext<RenderComponentOptions, BaseFritterContext extends FritterContext = FritterContext> =
 	BaseFritterContext &
 	{
 		renderComponent : FritterRenderComponentMiddlewareRenderComponentFunction<RenderComponentOptions>
 	};
 
-export type FritterRenderComponentMiddlewareGetOptionsFunction<BaseFritterContext, ComponentFunctionOptions> =
+export type FritterRenderComponentMiddlewareGetOptionsFunction<ComponentFunctionOptions, BaseFritterContext extends FritterContext = FritterContext> =
 	(
-		context : FritterRenderComponentMiddlewareFritterContext<BaseFritterContext, ComponentFunctionOptions>,
+		context : FritterRenderComponentMiddlewareFritterContext<ComponentFunctionOptions, BaseFritterContext>,
 		options : Partial<ComponentFunctionOptions>,
 	) => ComponentFunctionOptions;
 
@@ -29,11 +29,11 @@ export class FritterRenderComponentMiddleware<ComponentFunctionOptions, BaseFrit
 {
 	componentFunction : ComponentFunction<ComponentFunctionOptions>;
 
-	execute : FritterMiddlewareFunction<FritterRenderComponentMiddlewareFritterContext<BaseFritterContext, ComponentFunctionOptions>>;
+	execute : FritterMiddlewareFunction<FritterRenderComponentMiddlewareFritterContext<ComponentFunctionOptions, BaseFritterContext>>;
 
-	getOptionsFunction : FritterRenderComponentMiddlewareGetOptionsFunction<BaseFritterContext, ComponentFunctionOptions>;
+	getOptionsFunction : FritterRenderComponentMiddlewareGetOptionsFunction<ComponentFunctionOptions, BaseFritterContext>;
 
-	constructor(componentFunction : ComponentFunction<ComponentFunctionOptions>, getOptionsFunction : FritterRenderComponentMiddlewareGetOptionsFunction<BaseFritterContext, ComponentFunctionOptions>)
+	constructor(componentFunction : ComponentFunction<ComponentFunctionOptions>, getOptionsFunction : FritterRenderComponentMiddlewareGetOptionsFunction<ComponentFunctionOptions, BaseFritterContext>)
 	{
 		this.componentFunction = componentFunction;
 
