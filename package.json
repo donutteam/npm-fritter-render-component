@@ -1,0 +1,25 @@
+{
+	"name": "@fritter/render-component-middleware",
+	"version": "1.0.0",
+	"description": "./lib/index.js",
+	"main": "./lib/index.js",
+	"scripts": {
+		"build": "npx rimraf lib && npx tsc",
+		"prepublishOnly": "npm run build"
+	},
+	"keywords": [
+		"fritter",
+		"middleware"
+	],
+	"author": "Donut Team",
+	"license": "MIT",
+	"type": "module",
+	"peerDependencies": {
+		"@donutteam/document-builder": "6.x",
+		"@fritter/core": "0.x"
+	},
+	"devDependencies": {
+		"rimraf": "^5.0.5",
+		"typescript": "^5.3.3"
+	}
+}
