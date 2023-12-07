@@ -1,7 +1,7 @@
 {
 	"name": "@fritter/render-component",
 	"version": "1.0.0",
-	"description": "./lib/index.js",
+	"description": "A DocumentElement component rendering middleware for the Fritter web framework.",
 	"main": "./lib/index.js",
 	"scripts": {
 		"build": "npx rimraf lib && npx tsc",
