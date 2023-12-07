@@ -1,5 +1,5 @@
 {
-	"name": "@fritter/render-component-middleware",
+	"name": "@fritter/render-component",
 	"version": "1.0.0",
 	"description": "./lib/index.js",
 	"main": "./lib/index.js",
